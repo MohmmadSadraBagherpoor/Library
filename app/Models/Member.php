@@ -3,16 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
-class Member extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+class Member extends Authenticatable
 {
-    protected $guarded = [];
+    protected $fillable = ['name', 'email', 'password'];
 
-    public function loans() {
+    protected $hidden = ['password', 'remember_token'];
+
+    public function loans()
+    {
         return $this->hasMany(Loan::class);
     }
 
-    public function reservations() {
+    public function reservations()
+    {
         return $this->hasMany(Reservation::class);
     }
 }

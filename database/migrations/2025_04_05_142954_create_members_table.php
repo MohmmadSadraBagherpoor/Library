@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('password'); // 🔐 اضافه شده
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
             $table->date('registration_date');
+            $table->timestamp('email_verified_at')->nullable(); // ✔️ اختیاری
+            $table->rememberToken(); // 🔑 برای "remember me"
             $table->timestamps();
         });
     }

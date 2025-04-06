@@ -6,6 +6,8 @@ use App\Models\Author;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\AuthorFactory;
+use Database\Factories\BookFactory;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,5 +24,7 @@ class DatabaseSeeder extends Seeder
 //            'email' => 'test@example.com',
 //        ]);
         $this->call(AuthorSeeder::class);
+        $this->call(CategoryFactory::class);
+        $this->call(BookFactory::class);
     }
 }
