@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\MemberController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -14,6 +15,9 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register'])->name('register.register');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [AuthController::class, 'login'])->name('login.login');
+
+
+Route::get('/members/{member}', [MemberController::class, 'show'])->name('members.show');
 
 
 Route::prefix('books')->group(function (){
@@ -30,3 +34,5 @@ Route::prefix('authors')->group(function (){
     Route::get('/', [AuthorController::class,'index'])->name('author.index');
     Route::get('/{author}', [AuthorController::class, 'show'])->name('author.show');
 });
+
+Route::post('/reservation', [\App\Http\Controllers\ReservationController::class, 'reservation'])->name('reservation.reservation');
